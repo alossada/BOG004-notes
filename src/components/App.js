@@ -10,7 +10,7 @@ function App() {
           XOXO
         </p>
         <p>
-          RAMA MAIN
+          RAMA MAIN 2.0
         </p>
       </header>
     </div>
