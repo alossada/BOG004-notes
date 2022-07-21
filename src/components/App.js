@@ -10,7 +10,7 @@ function App() {
           XOXO
         </p>
         <p>
-          RAMA MAIN
+          RAMA Anamaria
         </p>
       </header>
     </div>
