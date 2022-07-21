@@ -10,7 +10,7 @@ function App() {
           XOXO
         </p>
         <p>
-          esta rama es para todas
+          RAMA MAIN
         </p>
       </header>
     </div>
