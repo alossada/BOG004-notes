@@ -1,20 +1,17 @@
-import '../styles/App.css';
+import {Routes, Route} from 'react-router-dom'
+import Board from './Board/Board'
+import Login from './Login/Login'
+import Register from './Register/Register'
+import AuthProvider from '../context/authContext'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-
-          XOXO
-        </p>
-        <p>
-          RAMA Anamaria OTRO CAMBIO PARA DEV aCA ESTA MI CAMBIO
-        </p>
-      </header>
-    </div>
-  );
+    <AuthProvider>
+      <Routes>
+        <Route path='/' element={<Board/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+      </Routes>
+    </AuthProvider>
+  )
 }
-
-export default App;
