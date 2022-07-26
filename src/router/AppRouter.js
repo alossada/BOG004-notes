@@ -8,9 +8,9 @@ export default function AppRouter() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path='/' element={<Board/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
+        <Route path='/board' element={<Board/>}></Route>
       </Routes>
     </AuthProvider>
   )
