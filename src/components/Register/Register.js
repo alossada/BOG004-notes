@@ -22,7 +22,7 @@ export default function Register() {
     setError('')
     try{
       await signup(user.email, user.password)
-      navigate('/')
+      navigate('/board')
       
     }catch(error){
       console.log(error.code);
