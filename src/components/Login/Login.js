@@ -22,7 +22,7 @@ export default function Login() {
     setError('')
     try{
       await login(user.email, user.password)
-      navigate('/')
+      navigate('/board')
       
     }catch(error){
       console.log(error.code);
