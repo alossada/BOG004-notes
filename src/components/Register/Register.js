@@ -1,17 +1,17 @@
-import { useState } from "react"
-import { useAuth } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { useAuth } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Register() {
 
+  const {signup} = useAuth();
+  const [error, setError]= useState();
   const [user, setUser]= useState({
     email:'',
     password:'',
   });
-  const {signup} = useAuth();
   const navigate = useNavigate();
-  const [error, setError]= useState();
 
   const handleChange = ({target: {name, value}}) => {
     setUser({...user, [name]:value})
@@ -23,41 +23,40 @@ export default function Register() {
     try{
       await signup(user.email, user.password)
       navigate('/board')
-      
     }catch(error){
       console.log(error.code);
       if (error.code === 'auth/weak-password'){
         setError('La contraseña no tiene 6 caracteres')
+      }else{
+        setError('error al registrar usuario');
       }
-      // setError(error.message);
     }
   }
 
   return (
-    <div>
-    {error && <p>{error}</p>}  
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input 
-        type='email' 
-        name='email' 
-        placeholder='myemail@gmail.com'
-        onChange={handleChange}
-      />
+    <> 
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='email'>Email</label>
+        <input 
+          type='email' 
+          name='email' 
+          placeholder='myemail@gmail.com'
+          onChange={handleChange}
+        />
 
-      <label htmlFor="password">Password</label>
-      <input 
-        type='password' 
-        name='password' 
-        id='password'
-        onChange={handleChange}
-        placeholder='XXXXX'
-      />
+        <label htmlFor='password'>Password</label>
+        <input 
+          type='password' 
+          name='password' 
+          id='password'
+          onChange={handleChange}
+          placeholder='XXXXX'
+        />
 
-      <button>Register</button>
+        <button>Register</button>
 
-    </form>
-    </div>
-
+        {error && <p>{error}</p>} 
+      </form>
+    </>
   )
 }

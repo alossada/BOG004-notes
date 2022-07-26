@@ -1,6 +1,5 @@
-// vista board
-import { useAuth } from "../../context/authContext"
-import Note from "./Note";
+import { useAuth } from '../../context/authContext'
+import Note from './Note';
 
 export default function Board() { 
 
