@@ -4,7 +4,7 @@ import { createNote } from '../../firebase/firestore'
 
 
 export default function Note() {
-    
+  
   const [noteText, setNotetext] = useState(null);
   
   const saveNote = () => {
