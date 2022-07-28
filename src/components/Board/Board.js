@@ -1,5 +1,5 @@
-// vista board
-import { useAuth } from "../../context/authContext"
+import { useAuth } from '../../context/authContext'
+import Note from './Note';
 
 export default function Board() { 
 
@@ -8,9 +8,10 @@ export default function Board() {
 
   return (
     <div>
-      <h1>
-      Aca estaran las notas de {user.email}
+      <h1>        
+        Aca estaran las notas de {user.email}
       </h1>
+      <Note/>
     </div>   
   )
 }
