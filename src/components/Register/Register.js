@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/form.css'
 
 
 export default function Register() {
@@ -35,25 +36,27 @@ export default function Register() {
 
   return (
     <> 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='email'>Email</label>
-        <input 
+      <form className='form' onSubmit={handleSubmit}>
+        <label className='form__title' htmlFor='email'>Email</label>
+        <input className='form__email'
           type='email' 
           name='email' 
           placeholder='myemail@gmail.com'
           onChange={handleChange}
         />
 
-        <label htmlFor='password'>Password</label>
-        <input 
+        <label className='form__title' htmlFor='password'>Contraseña</label>
+        <input className='form__password' 
           type='password' 
           name='password' 
           id='password'
           onChange={handleChange}
-          placeholder='XXXXX'
+          placeholder='xxxxxx'
         />
-
-        <button>Register</button>
+        <p>Al hacer click en Registrarme aceptas los terminos y condiciones.</p>
+        <button className='form__button--Send'>Registrarme</button>
+        <button className='form__button--Google'>Iniciar sesión con Google</button>
+        <button className='form__button--login'>¿Ya tienes cuenta?</button>        
 
         {error && <p>{error}</p>} 
       </form>
