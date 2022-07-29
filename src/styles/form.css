@@ -1,0 +1,63 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+.form {
+  width: 400px;
+  background:rgba(0, 0, 255, 0.071);
+  padding: 30px;
+  margin: auto;
+  margin-top: 200px;
+  border-radius: 5px;
+  font-family: 'Calibri';
+  font-size: 12px;
+  
+}
+.form p {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form__email, 
+.form__password {
+  background: rgba(255, 0, 0, 0.099);
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: none;
+  font-family: 'Calibri';
+  font-size: 18px;
+}
+
+.form__button--Send,
+.form__button--Google, 
+.form__button--login {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: none;
+  font-family: 'Calibri';
+  font-size: 18px;
+
+}
+
+.form__button--Send {
+  background: rgba(136, 91, 127, 0.663);
+}
+
+.form__button--Google {
+  background: rgba(255, 0, 0, 0.099);
+  margin-top: 25px;
+}
+
+.form__button--login {
+  background: none;
+}
+.form__button--login:hover {
+  text-decoration: underline;
+}
