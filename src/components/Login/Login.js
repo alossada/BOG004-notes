@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/form.css'
 
 // vista login
 export default function Login() {
@@ -35,9 +36,9 @@ export default function Login() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <label htmlFor='email'>Email</label>
-        <input 
+        <input className='form__email'
           type='email' 
           name='email' 
           placeholder='myemail@gmail.com'
@@ -45,7 +46,7 @@ export default function Login() {
         />
 
         <label htmlFor='password'>Password</label>
-        <input 
+        <input className='form__password'
           type='password' 
           name='password' 
           id='password'
@@ -53,7 +54,9 @@ export default function Login() {
           placeholder='XXXXX'
         />
         
-        <button>Login</button>
+        <button className='form__button--Send'>Login</button>
+        <button className='form__button--Google'>Iniciar sesión con Google</button>
+        <button className='form__button--login'>Registrate</button>
         
         {error && <p>{error}</p>}  
       </form>
