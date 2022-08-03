@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/form.css";
+import logo from '../../assets/images/Logo_Khipu_1x.png'
 
 export default function Register() {
-  const { signup } = useAuth();
+  const { signup, googleLogin } = useAuth();
 
   const navigate = useNavigate();
-  
+
   const [error, setError] = useState();
   const [user, setUser] = useState({
     email: "",
@@ -20,10 +21,9 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     try {
       await signup(user.email, user.password);
-      navigate("/board");
+      navigate("/board", { replace: true });
     } catch (error) {
       console.log(error.code);
       if (error.code === "auth/weak-password") {
@@ -34,9 +34,35 @@ export default function Register() {
     }
   };
 
+  const handleGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      await googleLogin();
+      navigate("/board", { replace: true });
+    } catch (error) {
+      if (error) {
+        setError("error al iniciar sesión con google");
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+    }
+  }, [error]);
+
+  const handleChangeUrl = () => {
+    return navigate("/", { replace: true });
+  };
+
   return (
     <>
-      <form className="form" onSubmit={handleSubmit}>
+    <div className="form">
+      <img className='form__logo' src={ logo } alt='logo'/>
+      <form  onSubmit={handleSubmit}>
         <label className="form__title" htmlFor="email">
           Email
         </label>
@@ -44,7 +70,7 @@ export default function Register() {
           className="form__email"
           type="email"
           name="email"
-          placeholder="myemail@gmail.com"
+          placeholder="Correo Electronico"
           onChange={handleChange}
         />
 
@@ -57,17 +83,36 @@ export default function Register() {
           name="password"
           id="password"
           onChange={handleChange}
-          placeholder="xxxxxx"
+          placeholder="Contraseña"
         />
-        <p>Al hacer click en Registrarme aceptas los terminos y condiciones.</p>
-        <button className="form__button--Send">Registrarme</button>
-        <button className="form__button--Google">
-          Iniciar sesión con Google
+
+        <p>Al hacer click en Registrarme aceptas las condiciones de uso de la aplicación Khipu Notes.</p>
+
+        <button type="submit" className="form__button--Send">
+          Registrarme
         </button>
-        <button className="form__button--login">¿Ya tienes cuenta?</button>
 
         {error && <p>{error}</p>}
       </form>
+
+      <section className="section__buttons"> 
+        <button
+          type="button"
+          className="form__button--Google"
+          onClick={handleGoogle}
+        >
+          Iniciar sesión con Google
+        </button>
+
+        <button
+          type="button"
+          className="form__button--login"
+          onClick={handleChangeUrl}
+        >
+          ¿Ya tienes cuenta en Khipu? Inicia Sesión
+        </button>
+      </section> 
+    </div>
     </>
   );
 }
