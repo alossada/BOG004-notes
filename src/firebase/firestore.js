@@ -3,7 +3,6 @@ import {
   addDoc,
   collection,
   serverTimestamp,
-  getDocs,
   onSnapshot,
   doc,
   getDoc,
@@ -16,9 +15,9 @@ export const createNote = (uid, note) => {
   addDoc(userNotes, { uid, note, postCreatedAt: serverTimestamp() });
 };
 
-export const getNotes = () => {
-  getDocs(userNotes);
-};
+// export const getNotes = () => {
+//   getDocs(userNotes);
+// };
 
 export const getAllNotes = (querySnapshot) => {
   onSnapshot(userNotes, querySnapshot);
