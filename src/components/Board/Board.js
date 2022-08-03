@@ -15,7 +15,7 @@ export default function Board() {
     <div>
       <button onClick={handleLogout}>logout</button>
       <h1>Aca estaran las notas de {user.email}</h1>
-      <Note />
+      <Note uid={user.uid} />
     </div>
   );
 }
