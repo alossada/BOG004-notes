@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/form.css";
+import logo from '../../assets/images/Logo_Khipu_1x.png'
 
 // vista login
 export default function Login() {
@@ -59,13 +60,15 @@ export default function Login() {
 
   return (
     <>
-      <form className="form" onSubmit={handleSubmit}>
+    <div className="form">
+      <img className='form__logo' src={ logo } alt='logo'/>
+      <form  onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
           className="form__email"
           type="email"
           name="email"
-          placeholder="myemail@gmail.com"
+          placeholder="Correo Electronico"
           onChange={handleChange}
         />
 
@@ -76,16 +79,16 @@ export default function Login() {
           name="password"
           id="password"
           onChange={handleChange}
-          placeholder="XXXXX"
+          placeholder="Contraseña"
         />
 
         <button type="submit" className="form__button--Send">
-          Login
+          Iniciar Sesión
         </button>
 
         {error && <p>{error}</p>}
       </form>
-      <section>
+      <section className="section__buttons">
         <button
           type="button"
           className="form__button--Google"
@@ -99,9 +102,10 @@ export default function Login() {
           className="form__button--login"
           onClick={handleChangeUrl}
         >
-          Registrate
+          ¿Eres nuevo en Khipu? Registrate
         </button>
       </section>
+      </div>
     </>
   );
 }
