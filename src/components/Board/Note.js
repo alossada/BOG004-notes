@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { createNote } from "../../firebase/firestore";
 
-export default function Note() {
+export default function Note({uid}) {
   const [noteText, setNotetext] = useState(null);
 
   const saveNote = () => {
-    createNote(noteText);
+    createNote(uid,noteText);
   };
 
   return (
