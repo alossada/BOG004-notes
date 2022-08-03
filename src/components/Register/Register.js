@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/form.css";
+import logo from '../../assets/images/Logo_Khipu_1x.png'
 
 export default function Register() {
   const { signup, googleLogin } = useAuth();
@@ -59,7 +60,9 @@ export default function Register() {
 
   return (
     <>
-      <form className="form" onSubmit={handleSubmit}>
+    <div className="form">
+      <img className='form__logo' src={ logo } alt='logo'/>
+      <form  onSubmit={handleSubmit}>
         <label className="form__title" htmlFor="email">
           Email
         </label>
@@ -67,7 +70,7 @@ export default function Register() {
           className="form__email"
           type="email"
           name="email"
-          placeholder="myemail@gmail.com"
+          placeholder="Correo Electronico"
           onChange={handleChange}
         />
 
@@ -80,10 +83,10 @@ export default function Register() {
           name="password"
           id="password"
           onChange={handleChange}
-          placeholder="xxxxxx"
+          placeholder="Contraseña"
         />
 
-        <p>Al hacer click en Registrarme aceptas los términos y condiciones.</p>
+        <p>Al hacer click en Registrarme aceptas las condiciones de uso de la aplicación Khipu Notes.</p>
 
         <button type="submit" className="form__button--Send">
           Registrarme
@@ -92,7 +95,7 @@ export default function Register() {
         {error && <p>{error}</p>}
       </form>
 
-      <section> 
+      <section className="section__buttons"> 
         <button
           type="button"
           className="form__button--Google"
@@ -106,9 +109,10 @@ export default function Register() {
           className="form__button--login"
           onClick={handleChangeUrl}
         >
-          ¿Ya tienes cuenta?
+          ¿Ya tienes cuenta en Khipu? Inicia Sesión
         </button>
       </section> 
+    </div>
     </>
   );
 }

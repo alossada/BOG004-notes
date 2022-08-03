@@ -12,23 +12,42 @@
   --white: #f1f1f1;
   --black: #010101; 
 }
+body {
+  background-image: url("../assets//images/illustration_khipu_sketch_1440x960_v2\ 1.png");
+  background-repeat: no-repeat;  
+  background-size: cover;
+  background-position: center center;
+  
+}
+
 .form {
-  width: 400px;
-  background:rgba(0, 0, 255, 0.071);
+  /* width: 400px;   */
+  width: 100vw;
+  height: 100vh;
   padding: 30px; 
-  margin: auto;
-  margin-top: 200px;
+  /* margin: auto;
+  margin-top: 200px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;  
   font-family: 'Calibri';
   font-size: 12px;
 }
+
+.form__logo{
+  
+}
+
 .form p {
   text-align: center;
   margin-bottom: 15px;
+  color: #f1f1f1;
 }
 .form__email, 
 .form__password {
-  background: rgba(255, 0, 0, 0.099);
+  background: #f1f1f1;
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -37,8 +56,9 @@
   font-family: 'Calibri';
   font-size: 18px;
 }
-.form__button--Send,
-.form__button--Google, 
+
+.form__button--Google,
+.form__button--Send, 
 .form__button--login {
   width: 100%;
   padding: 10px;
@@ -47,17 +67,32 @@
   border: none;
   font-family: 'Calibri';
   font-size: 18px;
+  
 }
+.form__button--Send,
 .form__button--Send {
-  background: rgba(136, 91, 127, 0.663);
+  background:#4DF5DD ;
 }
 .form__button--Google {
-  background: rgba(255, 0, 0, 0.099);
+  background: #f1f1f1;
   margin-top: 25px;
 }
 .form__button--login {
   background: none;
+  color: #f1f1f1;
 }
 .form__button--login:hover {
   text-decoration: underline;
+  color: #4DF5DD;
+}
+
+
+@media only screen and (min-width: 700px) {
+  .form{
+    /* align-items:flex-end ; */
+    width: 50%;
+    float: right;
+  } 
+    
+
 }
