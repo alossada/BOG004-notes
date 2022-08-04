@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createNote } from '../../firebase/firestore';
+import StyleNote from'../../styles/note.module.css'
 
 export default function Note({ uid }) {
   const [error, setError] = useState();
@@ -35,17 +36,17 @@ export default function Note({ uid }) {
   }, [error]);
 
   return (
-    <div>
+    <div className={StyleNote.input}>
       <input
         id='userText'
         type='text'
         name='userText'
         value={userText}
+        placeholder='Escribe una nota...'
         onChange={handleInputChange}
+        className={StyleNote.input__note}
       ></input>
-
-      <button onClick={saveNote}>Save</button>
-
+      <button className={StyleNote.input__botton} onClick={saveNote}>Save</button>
       {error && <p>{error}</p>}
     </div>
   );

@@ -3,6 +3,8 @@ import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/form.css";
 import logo from '../../assets/images/Logo_Khipu_1x.png'
+import logoGoogle from '../../assets/images/logogoogle.png'
+
 
 export default function Register() {
   const { signup, googleLogin } = useAuth();
@@ -59,10 +61,9 @@ export default function Register() {
   };
 
   return (
-    <>
-    <div className="form">
+    <div className="container">
+      <form className="form" onSubmit={handleSubmit}>
       <img className='form__logo' src={ logo } alt='logo'/>
-      <form  onSubmit={handleSubmit}>
         <label className="form__title" htmlFor="email">
           Email
         </label>
@@ -101,7 +102,7 @@ export default function Register() {
           className="form__button--Google"
           onClick={handleGoogle}
         >
-          Iniciar sesión con Google
+          Iniciar sesión con <img className="form__logoGoogle"  src={ logoGoogle } alt='logoGoogle'/>
         </button>
 
         <button
@@ -109,10 +110,9 @@ export default function Register() {
           className="form__button--login"
           onClick={handleChangeUrl}
         >
-          ¿Ya tienes cuenta en Khipu? Inicia Sesión
+          ¿Ya tienes cuenta en Khipu?<span className="form__button--register">Inicia Sesión</span>
         </button>
       </section> 
     </div>
-    </>
   );
 }
