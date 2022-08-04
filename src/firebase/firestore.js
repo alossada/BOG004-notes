@@ -6,6 +6,7 @@ import {
   onSnapshot,
   doc,
   getDoc,
+  getDocs
 } from "firebase/firestore";
 
 const userNotes = collection(db, "user-notes");
@@ -15,12 +16,12 @@ export const createNote = (uid, note) => {
   addDoc(userNotes, { uid, note, postCreatedAt: serverTimestamp() });
 };
 
-// export const getNotes = () => {
-//   getDocs(userNotes);
-// };
+export const getNotes = async () => {
+  return await getDocs(userNotes);
+};
 
-export const getAllNotes = (querySnapshot) => {
-  onSnapshot(userNotes, querySnapshot);
+export const getAllNotes = async (querySnapshot) => {
+  return onSnapshot(userNotes, querySnapshot);
 };
 
 // funcion para acceder a una publicación

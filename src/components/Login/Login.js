@@ -3,6 +3,7 @@ import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/form.css";
 import logo from '../../assets/images/Logo_Khipu_1x.png'
+import logoGoogle from '../../assets/images/logogoogle.png'
 
 // vista login
 export default function Login() {
@@ -59,11 +60,10 @@ export default function Login() {
   };
 
   return (
-    <>
-    <div className="form">
-      <img className='form__logo' src={ logo } alt='logo'/>
-      <form  onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+    <div className="container">
+      <form className="form"  onSubmit={handleSubmit}>
+        <img className='form__logo' src={ logo } alt='logo'/>
+        <label htmlFor="email">Correo</label>
         <input
           className="form__email"
           type="email"
@@ -72,7 +72,7 @@ export default function Login() {
           onChange={handleChange}
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Contraseña</label>
         <input
           className="form__password"
           type="password"
@@ -94,7 +94,7 @@ export default function Login() {
           className="form__button--Google"
           onClick={handleGoogle}
         >
-          Iniciar sesión con Google
+          Iniciar sesión con <img className="form__logoGoogle"  src={ logoGoogle } alt='logoGoogle'/>
         </button>
 
         <button
@@ -102,10 +102,9 @@ export default function Login() {
           className="form__button--login"
           onClick={handleChangeUrl}
         >
-          ¿Eres nuevo en Khipu? Registrate
+          ¿Eres nuevo en Khipu?<span className="form__button--register">Registrate</span> 
         </button>
       </section>
       </div>
-    </>
   );
 }
