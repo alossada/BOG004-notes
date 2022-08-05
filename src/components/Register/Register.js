@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
-import { useAuth } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
-import "../../styles/form.css";
+import { useState, useEffect } from 'react';
+import { useAuth } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/images/Logo_Khipu_1x.png'
+import logoGoogle from '../../assets/images/logogoogle.png'
+import '../../styles/form.css';
+
 
 export default function Register() {
   const { signup, googleLogin } = useAuth();
@@ -10,8 +13,8 @@ export default function Register() {
 
   const [error, setError] = useState();
   const [user, setUser] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const handleChange = ({ target: { name, value } }) => {
@@ -22,13 +25,13 @@ export default function Register() {
     e.preventDefault();
     try {
       await signup(user.email, user.password);
-      navigate("/board", { replace: true });
+      navigate('/board', { replace: true });
     } catch (error) {
       console.log(error.code);
-      if (error.code === "auth/weak-password") {
-        setError("La contraseña no tiene 6 caracteres");
+      if (error.code === 'auth/weak-password') {
+        setError('La contraseña no tiene 6 caracteres');
       } else {
-        setError("error al registrar usuario");
+        setError('Error al registrar usuario');
       }
     }
   };
@@ -37,10 +40,10 @@ export default function Register() {
     e.preventDefault();
     try {
       await googleLogin();
-      navigate("/board", { replace: true });
+      navigate('/board', { replace: true });
     } catch (error) {
       if (error) {
-        setError("error al iniciar sesión con google");
+        setError('Error al iniciar sesión con google');
       }
     }
   };
@@ -48,67 +51,68 @@ export default function Register() {
   useEffect(() => {
     if (error) {
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 2000);
     }
   }, [error]);
 
   const handleChangeUrl = () => {
-    return navigate("/", { replace: true });
+    return navigate('/', { replace: true });
   };
 
   return (
-    <>
-      <form className="form" onSubmit={handleSubmit}>
-        <label className="form__title" htmlFor="email">
+    <div className='container'>
+      <form className='form' onSubmit={handleSubmit}>
+      <img className='form__logo' src={ logo } alt='logo'/>
+        <label className='form__title' htmlFor='email'>
           Email
         </label>
         <input
-          className="form__email"
-          type="email"
-          name="email"
-          placeholder="myemail@gmail.com"
+          className='form__email'
+          type='email'
+          name='email'
+          placeholder='Correo Electronico'
           onChange={handleChange}
         />
 
-        <label className="form__title" htmlFor="password">
+        <label className='form__title' htmlFor='password'>
           Contraseña
         </label>
         <input
-          className="form__password"
-          type="password"
-          name="password"
-          id="password"
+          className='form__password'
+          type='password'
+          name='password'
+          id='password'
           onChange={handleChange}
-          placeholder="xxxxxx"
+          placeholder='Contraseña'
         />
 
-        <p>Al hacer click en Registrarme aceptas los términos y condiciones.</p>
+        <p>Al hacer click en Registrarme aceptas las condiciones de uso de la aplicación Khipu Notes.</p>
 
-        <button type="submit" className="form__button--Send">
+        <button type='submit' className='form__button--Send'>
           Registrarme
         </button>
 
         {error && <p>{error}</p>}
       </form>
 
-      <section> 
+      <section className='section__buttons'> 
         <button
-          type="button"
-          className="form__button--Google"
+          type='button'
+          className='form__button--Google'
           onClick={handleGoogle}
         >
-          Iniciar sesión con Google
+          Iniciar sesión con <img className='form__logoGoogle'  src={ logoGoogle } alt='logoGoogle'/>
         </button>
 
         <button
-          type="button"
-          className="form__button--login"
+          type='button'
+          className='form__button--login'
           onClick={handleChangeUrl}
         >
-          ¿Ya tienes cuenta?
+          ¿Ya tienes cuenta en Khipu?<span className='form__button--register'>Inicia Sesión</span>
         </button>
       </section> 
-    </>
+    </div>
   );
 }

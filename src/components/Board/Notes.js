@@ -1,45 +1,54 @@
-// import { useState, useEffect } from 'react';
-// import { getAllNotes } from '../../firebase/firestore'; 
+import { useState, useEffect } from 'react';
+import { getNotes, deleteNote } from '../../firebase/firestore';
+import StyleNotes from '../../styles/note.module.css';
 
 export default function Notes({ uid }) {
+  // hooks para declarar notas, id
+  const [notes, setNotes] = useState([]);
+  const [idToDelete, setIdToDelete] = useState();
 
-  // // estructura de hook para declarar lista de usuarios
-  // const [users, setUsers] = useState([]);
+  // funcion de peticion de notas
+  const getDataNotes = async () => {
+    getNotes()
+      .then((response) => {
+        setNotes(response.docs);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  // // funcion para peticion de usuarios
-  // const getUsers = async () => {
-  //   usersPetition(activeSessionToken)
-  //     .then((response) => {
-  //       setUsers(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  useEffect(() => {
+    getDataNotes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // let x;
-
-  // useEffect(() => {
-  //   getAllNotes((notes)=>{
-  //     notes.forEach((doc)=>{
-  //       if(doc.data().uid === uid){
-  //         x.push(doc.data());
-  //         // setType(doc.data().type);
-  //         console.log('NOTAAAS',doc.data());
-  //       }
-  //     });
-  //   });
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-  
-  // {x.map((noti) => (
-  //   <p>{noti.note}</p>
-  // ))}
+  if (idToDelete) {
+    deleteNote(idToDelete);
+    setIdToDelete('');
+    getDataNotes();
+  }
 
   return (
-    <div>
-      notiiis
+    // Filtro con uid para transformación
+    <div className={StyleNotes.note}>
+      {notes &&
+        notes
+          .filter((memo) => memo.data().uid === uid)
+          .map((memo) => (
+            <div key={memo.id.toString() + '-note'}>
+              <p className={StyleNotes.note__text}>{memo.data().note}</p>
+              <button
+                type='button'
+                id={memo.id.toString()}
+                onClick={(e) => {
+                  setIdToDelete(e.target.id);
+                }}
+              >
+                Borrar
+              </button>
+            </div>
+          ))}
     </div>
-  )
+  );
 }
