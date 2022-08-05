@@ -1,28 +1,28 @@
-:root{
-  --btnYellow: #FFA510;
-  --btnblue: #4DF5DD;
-  --btnTxt: #000D41;
-  --fuccia: #FF1075;
-  --blue : #002F6F;
+:root {
+  --btnYellow: #ffa510;
+  --btnblue: #4df5dd;
+  --btnTxt: #000d41;
+  --fuccia: #ff1075;
+  --blue: #002f6f;
   --white: #f1f1f1;
-  --black: #010101; 
+  --black: #010101;
 }
-.input{
+.input {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.input__note{
+.input__note {
   width: 80%;
   padding: 8px 10px;
   border-radius: 8px;
   margin: 50px 10px 10px;
-  -webkit-box-shadow: 2px 7px 9px -4px rgba(0,0,0,0.64); 
-  box-shadow: 2px 7px 9px -4px rgba(0,0,0,0.64);
+  -webkit-box-shadow: 2px 7px 9px -4px rgba(0, 0, 0, 0.64);
+  box-shadow: 2px 7px 9px -4px rgba(0, 0, 0, 0.64);
   border: 1px solid grey;
 }
-.note{
+.note {
   width: 90%;
   margin: 0 auto;
   border: 1px solid var(--btnTxt);
@@ -31,41 +31,29 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.note__text{
+.note__text {
   width: 90%;
   font-size: 0.8rem;
+  margin: 10px;
+  padding: 5px;
   border-radius: 5px;
   border: 1px solid var(--fuccia);
-  padding: 5px;
-  margin: 10px;
 }
-::placeholder{
+::placeholder {
   font-size: 0.7rem;
 }
-.input__botton{
+.input__botton {
+  padding: 5px 20px;
   border: none;
   border-radius: 10px;
-  padding: 5px 20px;
-  background-color: var(--btnYellow);
   color: var(--btnTxt);
+  background-color: var(--btnYellow);
 }
-
-
 @media only screen and (min-width: 700px) {
-    .input{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-    .input__note{
-      width: 40%;
-      padding: 8px 10px;
-      border-radius: 8px;
-      margin: 50px 10px;
-      -webkit-box-shadow: 2px 7px 9px -4px rgba(0,0,0,0.64); 
-      box-shadow: 2px 7px 9px -4px rgba(0,0,0,0.64);
-      border: 1px solid grey;
-    }
-  
+  .input {
+    flex-direction: row;
+  }
+  .input__note {
+    width: 40%;
+  }
 }

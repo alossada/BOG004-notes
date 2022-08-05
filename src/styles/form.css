@@ -12,52 +12,47 @@
   --white: #f1f1f1;
   --black: #010101; 
 }
-label{
-  color: var(--white);
-  width: 100%;
-  padding: 5px 0;
-  font-size: 1.2rem;
-}
 .container{
   height: 100vh;
   width: 100vw;
-  background-image: url("../assets//images/illustration_khipu_sketch_1440x960_v2\ 1.png"); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets//images/illustration_khipu_sketch_1440x960_v2\ 1.png'); 
   background-attachment: fixed; 
   background-size: cover; 
   background-position: center center; 
   background-repeat: no-repeat; 
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .form{
-  width: 100%;
-  padding: 30px; 
+  width: 90%;
+  padding: 30px 30px 10px 30px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;  
+  border-radius: 5px;
   font-family: 'Calibri';
   font-size: 12px;
 }
-.form p {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #f1f1f1;
+label{
+  width: 100%;
+  padding: 5px 0;
+  font-size: 1.2rem;
+  color: var(--white);
 }
 .form__email, 
 .form__password {
-  background: #f1f1f1;
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   margin-bottom: 15px;
   border: none;
   font-family: 'Calibri';
   font-size: 18px;
+  background: var(--white);
 }
 .form__button--Google,
 .form__button--Send, 
@@ -71,46 +66,54 @@ label{
   font-size: 18px;
 }
 .form__button--Send{
-  background:#4DF5DD ;
+  margin-top: 6px;
+  background:var(--btnblue);
+}
+.form p {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--white);
 }
 .form__button--Google {
-  background: #f1f1f1;
-  margin-top: 25px;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
+  background: var(--white);
 }
 .form__button--login {
-  background: none;
-  color: #f1f1f1;
+  width: 90%;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
   align-items: center;
+  color: var(--white);
+  background: none;
 }
 .form__button--register {
-  background-color: var(--btnYellow);
-  margin-top: 10px;
-  padding: 4px 10px;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
+  margin-top: 10px;
+  padding: 4px 10px;
   border-radius: 10px;
-  color: var(--btnTxt);
   margin-left: 5px;
+  font-size: 0.8rem;
+  color: var(--btnTxt);
+  background-color: var(--btnYellow);
 }
 .form__button--login:hover {
   text-decoration: underline;
-  color: #4DF5DD;
+  color: var(--btnblue);
 }
 .section__buttons{
-  padding: 0 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 30px;
   border-radius: 5px;
   font-family: 'Calibri';
   font-size: 12px;
@@ -132,20 +135,35 @@ label{
     align-items: flex-end;
   }
   .form{
-    width: 50%;
-  } 
+    width: 47%;
+  }
+  label{
+    width: 85%;
+  }
+  .form__email, 
+  .form__password {
+    width: 85%;
+  }
+  .form__button--Google,
+  .form__button--Send, 
+  .form__button--login{
+    width: 85%;
+  }
   .section__buttons{
-    width: 50%;
+    width: 47%;
   }
   .form__logo{
     width: 200px;
   }
   .form__button--login {
-    background: none;
-    color: #f1f1f1;
     flex-flow:row;
   }
-
-    
-
+}
+@media only screen and (min-width: 1000px) {
+  .form{
+    width: 42%;
+  } 
+  .section__buttons{
+    width: 42%;
+  }
 }

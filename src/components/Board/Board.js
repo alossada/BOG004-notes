@@ -20,7 +20,7 @@ export default function Board() {
           <img className='notes__logo' src={logo} alt='Logo khipu'></img>
         <section className='notes__sectionIcon'>
             <FaUserAlt className='notes__icon'/>
-          <button className='notes__logoutBotton' onClick={handleLogout}>logout</button>
+          <button className='notes__logoutBotton' onClick={handleLogout}>Logout</button>
         </section>
       </header>
       <Note uid={user.uid} />

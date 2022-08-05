@@ -5,28 +5,38 @@ import {
   serverTimestamp,
   onSnapshot,
   doc,
-  getDoc,
-  getDocs
+  getDocs,
+  query,
+  orderBy,
+  deleteDoc,
 } from "firebase/firestore";
 
+// COLLECTION
 const userNotes = collection(db, "user-notes");
 
 // CREATE
 export const createNote = (uid, note) => {
-  addDoc(userNotes, { uid, note, postCreatedAt: serverTimestamp() });
+  addDoc(userNotes, { 
+    uid, 
+    note, 
+    createdDate: serverTimestamp() 
+  });
 };
 
+// READ
 export const getNotes = async () => {
   return await getDocs(userNotes);
 };
 
-export const getAllNotes = async (querySnapshot) => {
-  return onSnapshot(userNotes, querySnapshot);
+// SORT
+export const sortedQuery = query(userNotes, orderBy('createdDate', 'desc'));
+
+// INSTANT READ
+export const getAllNotes = (querySnapshot) => {
+  return onSnapshot(sortedQuery, userNotes, querySnapshot);
 };
 
-// funcion para acceder a una publicación
-export const getNote = (uid) => {
-  const docRef = doc(userNotes, uid);
-  const docSnap = getDoc(docRef);
-  return docSnap;
+// DELETE
+export const deleteNote = (id) => {
+  deleteDoc(doc(userNotes, id));
 };

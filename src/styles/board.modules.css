@@ -1,60 +1,60 @@
-:root{
-    --btnYellow: #FFA510;
-    --btnblue: #4DF5DD;
-    --btnTxt: #000D41;
-    --fuccia: #FF1075;
-    --blue : #002F6F;
-    --white: #f1f1f1;
-    --black: #010101; 
+:root {
+  --btnYellow: #ffa510;
+  --btnblue: #4df5dd;
+  --btnTxt: #000d41;
+  --fuccia: #ff1075;
+  --blue: #002f6f;
+  --white: #f1f1f1;
+  --black: #010101;
 }
-h1{
-    text-align: center;
-    padding: 10px 5px;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
+h1 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 5px;
+  text-align: center;
+  font-family: sans-serif;
 }
-.notes__header{
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--btnTxt);
-    padding: 10px;
+.notes__header {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--btnTxt);
 }
-.notes__logo{
-    width: 60px;
+.notes__logo {
+  width: 60px;
 }
-.notes__sectionIcon{
-    display: flex;
+.notes__sectionIcon {
+  display: flex;
 }
-.notes__icon{
-    font-size: 1.5rem;
-    color: var(--btnTxt);
-    background-color: var(--white);
-    border-radius: 50%;
-    padding: 2px 5px;
-    margin-right: 20px;
+.notes__icon {
+  padding: 2px 5px;
+  margin-right: 20px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--btnTxt);
+  background-color: var(--white);
 }
-.notes__logoutBotton{
-    border: none;
-    padding: 5px 15px;
-    background-color: var(--btnYellow);
-    color: var(--btnTxt);
-    border-radius: 12px;
+.notes__logoutBotton {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 12px;
+  color: var(--btnTxt);
+  background-color: var(--btnYellow);
 }
-.notes__userName{
-    color: var(--blue);
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+.notes__userName {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: var(--blue);
 }
 
 @media only screen and (min-width: 700px) {
-    .notes__logo{
-        width: 100px;
-    }
-    .notes__icon{
-        font-size: 2.2rem;
-        padding: 5px 10px;
-    }
+  .notes__logo {
+    width: 100px;
+  }
+  .notes__icon {
+    font-size: 2.2rem;
+    padding: 5px 10px;
+  }
 }
