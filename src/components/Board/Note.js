@@ -1,20 +1,53 @@
-import React from 'react'
-import { useState } from 'react';
-import { createNote } from '../../firebase/firestore'
+import { useState, useEffect } from 'react';
+import { createNote } from '../../firebase/firestore';
+import StyleNote from'../../styles/note.module.css'
 
+export default function Note({ uid }) {
+  const [error, setError] = useState();
 
-export default function Note() {
-  
-  const [noteText, setNotetext] = useState(null);
-  
+  const [noteText, setNotetext] = useState({
+    userText: '',
+  });
+
+  const { userText } = noteText;
+
+  const handleInputChange = ({ target }) => {
+    setNotetext({
+      ...noteText,
+      [target.name]: target.value,
+    });
+  };
+
   const saveNote = () => {
-    createNote(noteText)
-  }
+    if (userText !== '') {
+      createNote(uid, noteText.userText);
+      setNotetext({ userText: '' });
+    }else{
+      setError('Ingresa la nota que quieres guardar');
+    }
+  };
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setError('');
+      }, 2000);
+    }
+  }, [error]);
 
   return (
-  <div>
-    <input type='text' onChange={e => setNotetext(e.target.value)}></input>
-    <button onClick={saveNote}>Save</button>
-  </div>
-  )
+    <div className={StyleNote.input}>
+      <input
+        id='userText'
+        type='text'
+        name='userText'
+        value={userText}
+        placeholder='Escribe una nota...'
+        onChange={handleInputChange}
+        className={StyleNote.input__note}
+      ></input>
+      <button className={StyleNote.input__botton} onClick={saveNote}>Save</button>
+      {error && <p>{error}</p>}
+    </div>
+  );
 }

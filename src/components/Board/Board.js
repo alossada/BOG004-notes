@@ -1,26 +1,30 @@
-import { useAuth } from '../../context/authContext'
+import { useAuth } from '../../context/authContext';
 import Note from './Note';
+import Notes from './Notes';
+import logo from '../../assets/images/Logo_Khipu_secondary_1x.png'
+import {FaUserAlt} from 'react-icons/fa'
+import '../../styles/board.modules.css'
 
-export default function Board() { 
+export default function Board() {
+  const { user, logout, loading } = useAuth(); //me trae la información del usuario (verifiga el login)
 
-  const {user, logout, loading} =useAuth()//me trae la información del usuario (verifiga el login)  
-  console.log(user);
+  if (loading) return <h1>loading</h1>;
 
-  const handleLogout = async() => {
-    await logout();    
-  }
-
-  if(loading) return <h1>loading</h1>
+  const handleLogout = async () => {
+    await logout();
+  };
 
   return (
     <div>
-      <button onClick={handleLogout}>
-        logout
-      </button>
-      <h1>        
-        Aca estaran las notas de {user.email}
-      </h1>
-      <Note/>
-    </div>   
-  )
+      <header className='notes__header'>
+          <img className='notes__logo' src={logo} alt='Logo khipu'></img>
+        <section className='notes__sectionIcon'>
+            <FaUserAlt className='notes__icon'/>
+          <button className='notes__logoutBotton' onClick={handleLogout}>Logout</button>
+        </section>
+      </header>
+      <Note uid={user.uid} />
+      <Notes uid={user.uid} />
+    </div>
+  );
 }

@@ -2,62 +2,168 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
-
-.form {
-  width: 400px;
-  background:rgba(0, 0, 255, 0.071);
-  padding: 30px;
-  margin: auto;
-  margin-top: 200px;
+:root{
+  --btnYellow: #FFA510;
+  --btnblue: #4DF5DD;
+  --btnTxt: #000D41;
+  --fuccia: #FF1075;
+  --blue : #002F6F;
+  --white: #f1f1f1;
+  --black: #010101; 
+}
+.container{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets//images/illustration_khipu_sketch_1440x960_v2\ 1.png'); 
+  background-attachment: fixed; 
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  overflow-x: hidden;
+}
+.form{
+  width: 90%;
+  padding: 30px 30px 10px 30px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
   font-family: 'Calibri';
   font-size: 12px;
-  
+}
+label{
+  width: 100%;
+  padding: 5px 0;
+  font-size: 1.2rem;
+  color: var(--white);
+}
+.form__email, 
+.form__password {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: none;
+  font-family: 'Calibri';
+  font-size: 18px;
+  background: var(--white);
+}
+.form__button--Google,
+.form__button--Send, 
+.form__button--login{
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: none;
+  font-family: 'Calibri';
+  font-size: 18px;
+}
+.form__button--Send{
+  margin-top: 6px;
+  background:var(--btnblue);
 }
 .form p {
   text-align: center;
   margin-bottom: 15px;
+  color: var(--white);
 }
-
-.form__email, 
-.form__password {
-  background: rgba(255, 0, 0, 0.099);
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  border: none;
-  font-family: 'Calibri';
-  font-size: 18px;
-}
-
-.form__button--Send,
-.form__button--Google, 
-.form__button--login {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  border: none;
-  font-family: 'Calibri';
-  font-size: 18px;
-
-}
-
-.form__button--Send {
-  background: rgba(136, 91, 127, 0.663);
-}
-
 .form__button--Google {
-  background: rgba(255, 0, 0, 0.099);
-  margin-top: 25px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  background: var(--white);
 }
-
 .form__button--login {
+  width: 90%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
   background: none;
+}
+.form__button--register {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  margin-left: 5px;
+  font-size: 0.8rem;
+  color: var(--btnTxt);
+  background-color: var(--btnYellow);
 }
 .form__button--login:hover {
   text-decoration: underline;
+  color: var(--btnblue);
+}
+.section__buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+  border-radius: 5px;
+  font-family: 'Calibri';
+  font-size: 12px;
+}
+.form__logo{
+  width: 150px;
+  margin: 20px 0 20px 0 ;
+}
+.form__logoGoogle{
+  width: 55px;
+  margin-left: 10px;
+  margin-top: 4px;
+}
+@media only screen and (min-width: 700px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .form{
+    width: 47%;
+  }
+  label{
+    width: 85%;
+  }
+  .form__email, 
+  .form__password {
+    width: 85%;
+  }
+  .form__button--Google,
+  .form__button--Send, 
+  .form__button--login{
+    width: 85%;
+  }
+  .section__buttons{
+    width: 47%;
+  }
+  .form__logo{
+    width: 200px;
+  }
+  .form__button--login {
+    flex-flow:row;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .form{
+    width: 42%;
+  } 
+  .section__buttons{
+    width: 42%;
+  }
 }
