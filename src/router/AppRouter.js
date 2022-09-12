@@ -1,9 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
+
+import AuthProvider from '../context/authContext';
+import { ProtectedRoute } from './protectedRoute';
+import { NoteProvider } from '../context/noteProvider';
+
+
 import Login from '../components/Login/Login';
 import Register from '../components/Register/Register';
 import Board from '../components/Board/Board';
-import AuthProvider from '../context/authContext';
-import { ProtectedRoute } from './protectedRoute';
 
 export default function AppRouter() {
   return (
@@ -15,7 +19,9 @@ export default function AppRouter() {
           path='/board'
           element={
             <ProtectedRoute>
-              <Board />
+              <NoteProvider>  
+                <Board />
+              </NoteProvider> 
             </ProtectedRoute>
           }
         />

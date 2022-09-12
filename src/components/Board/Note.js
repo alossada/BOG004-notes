@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { NoteContext } from '../../context/noteContext';
 import { createNote } from '../../firebase/firestore';
 import StyleNote from'../../styles/note.module.css'
 
-export default function Note({ uid }) {
+export const Note = ({ uid })=> {
+
+  const { onSetNewNote } = useContext(NoteContext);
+
   const [error, setError] = useState();
 
   const [noteText, setNotetext] = useState({
@@ -18,9 +22,11 @@ export default function Note({ uid }) {
     });
   };
 
-  const saveNote = () => {
+  const saveNote = (e) => {
+    e.preventDefault();
     if (userText !== '') {
       createNote(uid, noteText.userText);
+      onSetNewNote();
       setNotetext({ userText: '' });
     }else{
       setError('Ingresa la nota que quieres guardar');
@@ -36,18 +42,19 @@ export default function Note({ uid }) {
   }, [error]);
 
   return (
-    <div className={StyleNote.input}>
+    <form className={StyleNote.input} onSubmit={saveNote}>
       <input
-        id='userText'
         type='text'
+        id='userText'
         name='userText'
         value={userText}
+        autoComplete='off'
         placeholder='Escribe una nota...'
         onChange={handleInputChange}
         className={StyleNote.input__note}
       ></input>
-      <button className={StyleNote.input__botton} onClick={saveNote}>Save</button>
+      <button type="onSubmit" className={StyleNote.input__botton}>Save</button>
       {error && <p>{error}</p>}
-    </div>
+    </form>
   );
 }

@@ -32,8 +32,10 @@ export const getNotes = async () => {
 export const sortedQuery = query(userNotes, orderBy('createdDate', 'desc'));
 
 // INSTANT READ
-export const getAllNotes = (querySnapshot) => {
-  return onSnapshot(sortedQuery, userNotes, querySnapshot);
+export const getAllNotes = (setNotes) => {
+  return onSnapshot(sortedQuery, userNotes, (querySnapshot)=>{
+    setNotes(querySnapshot.docs)
+  });
 };
 
 // DELETE
